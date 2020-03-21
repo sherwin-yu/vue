@@ -1,14 +1,19 @@
 <template>
   <div>
-    <div class="todo-item">sleep</div>
-    <div class="todo-item">wake up</div>
-    <div class="todo-item">eat</div>
+    <div v-for="todo in todos" :key="todo">
+      <div class="todo-item">{{todo}}</div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "TodoItem"
+  name: "TodoItem",
+  data() {
+    return {
+      todos: ["sleep", "wake up", "eat", "gym"]
+    };
+  }
 };
 </script>
 
