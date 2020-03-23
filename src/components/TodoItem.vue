@@ -3,7 +3,10 @@
     <div v-for="todo in todos" :key="todo">
       <div class="todo-item">
         <div class="flex-container">
-          <div>{{todo}}</div>
+          <div>
+            <input type="checkbox" />
+            {{todo}}
+          </div>
           <button class="del-button">Delete</button>
         </div>
       </div>
