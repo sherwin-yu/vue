@@ -4,7 +4,7 @@
       <div class="todo-item">
         <div class="flex-container">
           <div>{{todo}}</div>
-          <button>Delete</button>
+          <button class="del-button">Delete</button>
         </div>
       </div>
     </div>
@@ -32,5 +32,10 @@ export default {
   padding: 10px 15px;
   background-color: #f6f6f6;
   border-bottom: 1px solid lightgray;
+}
+.del-button {
+  background-color: red;
+  color: white;
+  border: 1px solid transparent;
 }
 </style>
