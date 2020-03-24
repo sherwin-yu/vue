@@ -3,9 +3,9 @@
     <div v-for="todo in todos" :key="todo">
       <div class="todo-item">
         <div class="flex-container">
-          <div>
+          <div v-bind:class="{'is-completed': todo.isCompleted}">
             <input type="checkbox" />
-            {{todo}}
+            {{todo.name}}
           </div>
           <button class="del-button">Delete</button>
         </div>
@@ -19,7 +19,15 @@ export default {
   name: "TodoItem",
   data() {
     return {
-      todos: ["sleep", "wake up", "eat", "gym"]
+      todos: [
+        {
+          name: "sleep",
+          isCompleted: false
+        },
+        { name: "wake up", isCompleted: true },
+        { name: "eat", isCompleted: false },
+        { name: "gym", isCompleted: true }
+      ]
     };
   }
 };
@@ -40,5 +48,8 @@ export default {
   background-color: red;
   color: white;
   border: 1px solid transparent;
+}
+.is-completed {
+  text-decoration: line-through;
 }
 </style>
