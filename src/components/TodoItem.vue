@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div v-for="todo in todos" :key="todo">
+    <div v-for="todo in todos" :key="todo.name">
       <div class="todo-item">
         <div class="flex-container">
           <div v-bind:class="{'is-completed': todo.isCompleted}">
-            <input type="checkbox" />
+            <input type="checkbox" v-on:change="handleChange(todo)" />
             {{todo.name}}
           </div>
           <button class="del-button">Delete</button>
@@ -29,6 +29,11 @@ export default {
         { name: "gym", isCompleted: true }
       ]
     };
+  },
+  methods: {
+    handleChange(todo) {
+      todo.isCompleted = !todo.isCompleted;
+    }
   }
 };
 </script>
