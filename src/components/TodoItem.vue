@@ -3,7 +3,7 @@
     <div v-for="todo in todos" :key="todo.id">
       <div class="todo-item">
         <div class="flex-container">
-          <div v-bind:class="{'is-completed': todo.isCompleted}">
+          <div :class="{'is-completed': todo.isCompleted}">
             <input type="checkbox" v-model="todo.isCompleted" @change="handleChange(todo)" />
             {{todo.name}}
           </div>
@@ -28,7 +28,8 @@ export default {
     };
   },
   methods: {
-    handleChange(todo) {
+    handleChange(selectedTodo) {
+      const todo = this.todos.filter(todo => todo.id === selectedTodo.id);
       todo.isCompleted = !todo.isCompleted;
     },
     handleDelete(deletedTodo) {
@@ -53,6 +54,7 @@ export default {
   background-color: red;
   color: white;
   border: 1px solid transparent;
+  cursor: pointer;
 }
 .is-completed {
   text-decoration: line-through;
