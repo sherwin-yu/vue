@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div v-for="todo in todos" :key="todo.name">
+    <div v-for="todo in todos" :key="todo.id">
       <div class="todo-item">
         <div class="flex-container">
           <div v-bind:class="{'is-completed': todo.isCompleted}">
-            <input type="checkbox" v-on:change="handleChange(todo)" />
+            <input type="checkbox" v-model="todo.isCompleted" @change="handleChange(todo)" />
             {{todo.name}}
           </div>
-          <button class="del-button">Delete</button>
+          <button class="del-button" @click="handleDelete(todo.id)">Delete</button>
         </div>
       </div>
     </div>
@@ -20,19 +20,19 @@ export default {
   data() {
     return {
       todos: [
-        {
-          name: "sleep",
-          isCompleted: false
-        },
-        { name: "wake up", isCompleted: true },
-        { name: "eat", isCompleted: false },
-        { name: "gym", isCompleted: true }
+        { id: 1, name: "sleep", isCompleted: false },
+        { id: 2, name: "wake up", isCompleted: true },
+        { id: 3, name: "eat", isCompleted: false },
+        { id: 4, name: "gym", isCompleted: true }
       ]
     };
   },
   methods: {
     handleChange(todo) {
       todo.isCompleted = !todo.isCompleted;
+    },
+    handleDelete(deletedTodo) {
+      this.todos = this.todos.filter(todo => todo.id != deletedTodo);
     }
   }
 };
