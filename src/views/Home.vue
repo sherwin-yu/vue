@@ -3,7 +3,7 @@
     <Title msg="Todos" />
     <div class="todos">
       <NewTodo />
-      <TodoItem />
+      <Todos v-bind:todos="todos" v-on:del-todo="handleDelete" />
     </div>
   </div>
 </template>
@@ -12,14 +12,29 @@
 // @ is an alias to /src
 import Title from "@/components/Title.vue";
 import NewTodo from "@/components/NewTodo.vue";
-import TodoItem from "@/components/TodoItem.vue";
+import Todos from "@/components/Todos.vue";
 
 export default {
   name: "Home",
   components: {
     Title,
     NewTodo,
-    TodoItem
+    Todos
+  },
+  data() {
+    return {
+      todos: [
+        { id: 1, name: "sleep", isCompleted: false },
+        { id: 2, name: "wake up", isCompleted: true },
+        { id: 3, name: "eat", isCompleted: false },
+        { id: 4, name: "gym", isCompleted: true }
+      ]
+    };
+  },
+  methods: {
+    handleDelete(deletedTodo) {
+      this.todos = this.todos.filter(todo => todo.id != deletedTodo);
+    }
   }
 };
 </script>

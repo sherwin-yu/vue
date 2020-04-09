@@ -1,21 +1,20 @@
 <template>
   <div>
-    <div class="todo-item">
-      <div class="flex-container">
-        <div :class="{'is-completed': todo.isCompleted}">
-          <input type="checkbox" v-model="todo.isCompleted" @change="handleChange(todo)" />
-          {{todo.name}}
-        </div>
-        <button class="del-button" @click="$emit('del-todo', todo.id)">Delete</button>
-      </div>
+    <div v-for="todo in todos" :key="todo.id">
+      <TodoItem v-bind:todo="todo" v-on:del-todo="$emit('del-todo', todo.id)" />
     </div>
   </div>
 </template>
 
 <script>
+import TodoItem from "./TodoItem.vue";
+
 export default {
-  name: "TodoItem",
-  props: ["todo"],
+  name: "Todos",
+  components: {
+    TodoItem
+  },
+  props: ["todos"],
   methods: {
     handleChange(selectedTodo) {
       const todo = this.todos.filter(todo => todo.id === selectedTodo.id);
