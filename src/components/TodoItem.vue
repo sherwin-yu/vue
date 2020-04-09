@@ -20,9 +20,6 @@ export default {
     handleChange(selectedTodo) {
       const todo = this.todos.filter(todo => todo.id === selectedTodo.id);
       todo.isCompleted = !todo.isCompleted;
-    },
-    handleDelete(deletedTodo) {
-      this.todos = this.todos.filter(todo => todo.id != deletedTodo);
     }
   }
 };
