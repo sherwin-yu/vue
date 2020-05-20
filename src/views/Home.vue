@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Title msg="Todos" />
+    <Title msg="Todos!" />
     <div class="todos">
       <NewTodo v-on:add-todo="addTodo" />
       <Todos v-bind:todos="todos" v-on:del-todo="handleDelete" />
