@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Title msg="Todos!" />
+    <Title msg="Todos" />
     <div class="todos">
       <NewTodo v-on:add-todo="addTodo" />
       <Todos v-bind:todos="todos" v-on:del-todo="handleDelete" />
@@ -19,7 +19,7 @@ export default {
   components: {
     Title,
     NewTodo,
-    Todos,
+    Todos
   },
   data() {
     return {
@@ -27,18 +27,18 @@ export default {
         { id: 1, name: "sleep", isCompleted: false },
         { id: 2, name: "wake up", isCompleted: true },
         { id: 3, name: "eat", isCompleted: false },
-        { id: 4, name: "gym", isCompleted: true },
-      ],
+        { id: 4, name: "gym", isCompleted: true }
+      ]
     };
   },
   methods: {
     handleDelete(deletedTodo) {
-      this.todos = this.todos.filter((todo) => todo.id != deletedTodo);
+      this.todos = this.todos.filter(todo => todo.id != deletedTodo);
     },
     addTodo(newTodo) {
       this.todos = [...this.todos, newTodo];
-    },
-  },
+    }
+  }
 };
 </script>
 
